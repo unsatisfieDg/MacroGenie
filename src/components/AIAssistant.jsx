@@ -272,7 +272,7 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
       </div>
 
       {/* Input Area */}
-      <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-2">
+      <div className="flex gap-2 items-start">
         {/* Textarea */}
         <div className="flex-1 relative">
           <textarea
@@ -281,28 +281,29 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
           onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask me anything..."
-            className="w-full p-2.5 sm:p-3 pr-20 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
+            className="w-full p-3 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none h-[60px]"
             rows="2"
           />
-          <div className="hidden sm:flex absolute bottom-2.5 right-3 items-center gap-1 text-xs text-gray-400 pointer-events-none">
-            <span>Press Enter</span>
-            <span className="text-base">↵</span>
-          </div>
         </div>
         
-        {/* Send Button */}
+        {/* Send Button - matches textarea height */}
         <button
           onClick={sendMessage}
           disabled={!chatInput.trim() || isTyping}
-          className={`w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-sm text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 shadow-md ${
+          className={`h-[60px] w-[60px] rounded-xl font-medium text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center shadow-md flex-shrink-0 ${
             !chatInput.trim() || isTyping
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 hover:from-green-600 hover:via-emerald-600 hover:to-teal-600 shadow-green-200 dark:shadow-green-900/50 hover:shadow-lg'
+              ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed opacity-50'
+              : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:shadow-lg active:scale-95'
           }`}
         >
-          <Send className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-          <span className="sm:inline">Send</span>
+          <Send className="w-5 h-5" />
         </button>
+      </div>
+      
+      {/* Press Enter Hint - Below input */}
+      <div className="hidden sm:flex items-center justify-end gap-1.5 text-xs text-gray-400 mt-1">
+        <span>Press Enter to send</span>
+        <kbd className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-xs font-mono">↵</kbd>
       </div>
       
       {/* Quick Actions */}
