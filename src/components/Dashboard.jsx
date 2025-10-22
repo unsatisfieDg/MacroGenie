@@ -21,7 +21,7 @@ const Dashboard = ({ userData, nutrition, dailyLog, setDailyLog, onProfileClick,
   };
 
   return (
-    <div className="max-w-6xl mx-auto animate-fade-in-up px-3 sm:px-4 md:px-5 lg:px-6 pt-20 sm:pt-36">
+    <div className="max-w-6xl mx-auto animate-fade-in-up px-3 sm:px-4 md:px-5 lg:px-6 pt-20">
       {/* Main Content Card */}
       <div className="health-card p-6 sm:p-8 mb-6">
 

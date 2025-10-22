@@ -272,8 +272,8 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
       </div>
 
       {/* Input Area */}
-      <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-3">
-        {/* Mobile: Full width textarea */}
+      <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-2">
+        {/* Textarea */}
         <div className="flex-1 relative">
           <textarea
             ref={inputRef}
@@ -281,7 +281,7 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
           onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask me anything..."
-            className="w-full p-3 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm sm:text-base text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
+            className="w-full p-2.5 sm:p-3 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
             rows="2"
           />
           <div className="hidden sm:block absolute bottom-2 right-2 text-xs text-gray-400">
@@ -289,17 +289,17 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
           </div>
         </div>
         
-        {/* Mobile: Full width button, Desktop: Auto width */}
+        {/* Send Button */}
         <button
           onClick={sendMessage}
           disabled={!chatInput.trim() || isTyping}
-          className={`w-full sm:w-auto px-4 py-2.5 sm:py-3 rounded-xl font-medium text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 ${
+          className={`w-full sm:w-auto px-4 py-2.5 rounded-xl font-medium text-sm text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 ${
             !chatInput.trim() || isTyping
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl'
           }`}
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-4 h-4 sm:w-5 sm:h-5" />
           <span className="sm:hidden">Send Message</span>
         </button>
       </div>
