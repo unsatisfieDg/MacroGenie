@@ -281,11 +281,12 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
           onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask me anything..."
-            className="w-full p-2.5 sm:p-3 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
+            className="w-full p-2.5 sm:p-3 pr-20 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
             rows="2"
           />
-          <div className="hidden sm:block absolute bottom-2 right-2 text-xs text-gray-400">
-            Press Enter ↵
+          <div className="hidden sm:flex absolute bottom-2.5 right-3 items-center gap-1 text-xs text-gray-400 pointer-events-none">
+            <span>Press Enter</span>
+            <span className="text-base">↵</span>
           </div>
         </div>
         
@@ -293,14 +294,14 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
         <button
           onClick={sendMessage}
           disabled={!chatInput.trim() || isTyping}
-          className={`w-full sm:w-auto px-4 py-2.5 rounded-xl font-medium text-sm text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 ${
+          className={`w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-sm text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 shadow-md ${
             !chatInput.trim() || isTyping
               ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl'
+              : 'bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 hover:from-green-600 hover:via-emerald-600 hover:to-teal-600 shadow-green-200 dark:shadow-green-900/50 hover:shadow-lg'
           }`}
         >
-          <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-          <span className="sm:hidden">Send Message</span>
+          <Send className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+          <span className="sm:inline">Send</span>
         </button>
       </div>
       
