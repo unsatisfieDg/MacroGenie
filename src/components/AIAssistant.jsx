@@ -280,7 +280,7 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
           onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask about nutrition or meals..."
-            className="w-full p-3 pr-12 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-gray-900 dark:text-white transition-all duration-300 focus-ring focus:border-green-500 resize-none"
+            className="w-full p-3 pr-12 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
             rows="2"
           />
           <div className="absolute bottom-2 right-2 text-xs text-gray-400">

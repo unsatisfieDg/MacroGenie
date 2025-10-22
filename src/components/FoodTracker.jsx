@@ -129,7 +129,71 @@ const FoodTracker = ({ dailyLog, setDailyLog }) => {
       <div className="space-y-4">
         {/* Search Input */}
         <div className="relative">
-          <div className="flex gap-3">
+          {/* Mobile Layout (< 640px) - Stacked */}
+          <div className="sm:hidden space-y-3">
+            {/* Search Input - Full Width */}
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none z-10" />
+              <input
+                type="text"
+                placeholder="Search food..."
+                value={foodSearch}
+                onChange={handleInputChange}
+                onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+                onFocus={() => setShowSuggestions(foodSearch.length === 0)}
+                className="w-full pl-11 pr-10 py-3.5 text-base border-2 border-gray-300 dark:border-white/8 rounded-xl bg-white dark:bg-[#1f1f1f] text-gray-900 dark:text-white transition-all duration-300 focus-ring focus:border-blue-500 hover:border-gray-400 dark:hover:border-gray-600"
+              />
+              {foodSearch && (
+                <button
+                  onClick={() => {
+                    setFoodSearch('');
+                    setSearchResults([]);
+                    setLiveResults([]);
+                    setShowSuggestions(false);
+                  }}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors z-10"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+            </div>
+            
+            {/* Grams + Button Row */}
+            <div className="flex gap-3">
+              <input
+                type="number"
+                placeholder="Grams"
+                value={foodAmount}
+                onChange={(e) => setFoodAmount(e.target.value)}
+                className="flex-1 px-4 py-3.5 text-base border-2 border-gray-300 dark:border-white/8 rounded-xl bg-white dark:bg-[#1f1f1f] text-gray-900 dark:text-white transition-all duration-300 focus-ring focus:border-blue-500 hover:border-gray-400 dark:hover:border-gray-600"
+              />
+              
+              <button
+                onClick={handleSearch}
+                disabled={isSearching || !foodSearch.trim()}
+                className={`flex-1 px-4 py-3.5 rounded-xl font-medium text-white transition-all duration-300 focus-ring text-base ${
+                  isSearching || !foodSearch.trim()
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 shadow-lg hover:shadow-xl'
+                }`}
+              >
+                {isSearching ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Adding...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center gap-2">
+                    <Plus className="w-5 h-5" />
+                    <span>Add Food</span>
+                  </div>
+                )}
+              </button>
+            </div>
+          </div>
+          
+          {/* Desktop Layout (≥ 640px) - Horizontal */}
+          <div className="hidden sm:flex gap-3">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input

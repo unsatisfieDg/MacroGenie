@@ -207,7 +207,7 @@ const RecipeFinder = () => {
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
             onFocus={() => setCurrentField('ingredients')}
-            className={`w-full p-4 border-2 rounded-xl bg-white dark:bg-[#262626] text-gray-900 dark:text-white transition-all duration-300 focus-ring resize-none ${
+            className={`w-full p-4 border-2 rounded-xl bg-white dark:bg-[#262626] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring resize-none ${
               currentField === 'ingredients' ? 'border-orange-500 shadow-lg' : 'border-gray-300 dark:border-white/10'
             }`}
           rows="3"
@@ -268,16 +268,16 @@ const RecipeFinder = () => {
         {recipes.map((recipe, idx) => (
           <div 
             key={idx} 
-            className="group p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-gray-200 dark:border-white/10 hover:shadow-lg transition-all duration-300 hover-scale animate-fade-in-up"
+            className="group p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl border border-gray-200 dark:border-white/10 hover:shadow-lg transition-all duration-300 hover-scale animate-fade-in-up"
             style={{ animationDelay: `${idx * 0.1}s` }}
           >
-            <div className="flex gap-4">
+            <div className="flex gap-3 sm:gap-4">
               {/* Recipe Image */}
-              <div className="relative">
+              <div className="relative flex-shrink-0">
               <img
                 src={recipe.image}
                 alt={recipe.name}
-                  className="w-20 h-20 rounded-xl object-cover shadow-md group-hover:shadow-lg transition-shadow duration-300"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover shadow-md group-hover:shadow-lg transition-shadow duration-300"
                   onError={(e) => {
                     e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik00MCAyMEMzMS4xNjM0IDIwIDI0IDI3LjE2MzQgMjQgMzZDMjQgNDQuODM2NiAzMS4xNjM0IDUyIDQwIDUyQzQ4LjgzNjYgNTIgNTYgNDQuODM2NiA1NiAzNkM1NiAyNy4xNjM0IDQ4LjgzNjYgMjAgNDAgMjBaIiBmaWxsPSIjOUNBM0FGIi8+CjxwYXRoIGQ9Ik0yOCA2MEMyOCA1NS41ODE3IDMxLjU4MTcgNTIgMzYgNTJINDRDNDguNDE4MyA1MiA1MiA1NS41ODE3IDUyIDYwVjY4QzUyIDcyLjQxODMgNDguNDE4MyA3NiA0NCA3NkgzNkMzMS41ODE3IDc2IDI4IDcyLjQxODMgMjggNjhWNjBaIiBmaWxsPSIjOUNBM0FGIi8+Cjwvc3ZnPgo=';
                   }}
@@ -289,53 +289,54 @@ const RecipeFinder = () => {
               
               {/* Recipe Info */}
               <div className="flex-1 min-w-0">
-                <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-2 line-clamp-2">
+                <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors mb-2 line-clamp-2">
                   {recipe.name}
                 </h4>
                 
                 {/* Nutrition Info */}
-                <div className="flex items-center gap-4 mb-3 text-sm text-gray-600 dark:text-gray-400">
-                  <span className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-3 gap-y-1.5 mb-2 sm:mb-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <div className="w-2 h-2 bg-red-400 rounded-full flex-shrink-0"></div>
                     {recipe.calories} cal
                   </span>
-                  <span className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
                     P: {recipe.protein}g
                   </span>
-                  <span className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
                     C: {recipe.carbs}g
                   </span>
-                  <span className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full flex-shrink-0"></div>
                     F: {recipe.fats}g
                   </span>
                 </div>
                 
                 {/* Recipe Meta */}
-                <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-500">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    Quick meal
+                <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-3 gap-y-1.5 text-xs text-gray-500 dark:text-gray-500">
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <Clock className="w-3 h-3 flex-shrink-0" />
+                    <span className="hidden sm:inline">Quick meal</span>
+                    <span className="sm:hidden">Quick</span>
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Users className="w-3 h-3" />
+                  <span className="flex items-center gap-1 whitespace-nowrap">
+                    <Users className="w-3 h-3 flex-shrink-0" />
                     1 serving
                   </span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(recipe.calories)}`}>
+                  <span className={`px-2 py-0.5 sm:py-1 rounded-full text-xs font-medium whitespace-nowrap ${getDifficultyColor(recipe.calories)}`}>
                     {recipe.calories < 200 ? 'Light' : recipe.calories < 400 ? 'Moderate' : 'Hearty'}
                   </span>
                 </div>
               </div>
               
               {/* View Recipe Button */}
-              <div className="flex items-center">
+              <div className="flex items-center flex-shrink-0">
                 <a
                   href={recipe.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-all duration-300 hover-scale text-sm font-medium"
+                  className="group/btn flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-all duration-300 hover-scale text-xs sm:text-sm font-medium"
                 >
                   <span>View</span>
                   <ExternalLink className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform duration-300" />

@@ -264,7 +264,7 @@ function App() {
 
   return (
     <div className={`min-h-screen transition-all duration-500 overflow-x-hidden ${
-      darkMode 
+      darkMode && currentStep === 'dashboard'
         ? 'dark bg-[#0f0f0f]' 
         : 'bg-gradient-to-br from-slate-300 via-slate-200 to-slate-300'
     }`}>

@@ -57,7 +57,7 @@ const Footer = () => {
                 href="https://github.com/unsatisfieDg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 dark:bg-[#262626] hover:bg-indigo-100 dark:hover:bg-indigo-900/30 rounded-lg transition-all duration-200 hover-lift group"
+                className="p-2.5 bg-gray-100 dark:bg-[#262626] hover:bg-indigo-100 dark:hover:bg-indigo-900/30 rounded-lg transition-all duration-200 hover-lift group flex items-center justify-center"
                 aria-label="GitHub - @unsatisfieDg"
               >
                 <Github className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />

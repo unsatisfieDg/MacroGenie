@@ -46,7 +46,7 @@ const Header = ({ darkMode, setDarkMode, user, onLogout, userName, greeting, onP
                 {/* Dark Mode Toggle */}
                 <button
                   onClick={() => setDarkMode(!darkMode)}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 flex items-center justify-center"
                   aria-label="Toggle dark mode"
                 >
                   {darkMode ? (
@@ -60,7 +60,7 @@ const Header = ({ darkMode, setDarkMode, user, onLogout, userName, greeting, onP
                 {user && (
                   <button
                     onClick={onLogout}
-                    className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200"
+                    className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200 flex items-center justify-center"
                     aria-label="Logout"
                   >
                     <LogOut className="w-4 h-4 text-red-600 dark:text-red-400" />
@@ -104,7 +104,7 @@ const Header = ({ darkMode, setDarkMode, user, onLogout, userName, greeting, onP
               {/* Dark Mode Toggle */}
       <button
         onClick={() => setDarkMode(!darkMode)}
-                className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200"
+                className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 flex items-center justify-center"
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? (
@@ -118,7 +118,7 @@ const Header = ({ darkMode, setDarkMode, user, onLogout, userName, greeting, onP
               {user && (
                 <button
                   onClick={onLogout}
-                  className="p-2.5 rounded-lg bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200"
+                  className="p-2.5 rounded-lg bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200 flex items-center justify-center"
                   aria-label="Logout"
                 >
                   <LogOut className="w-5 h-5 text-red-600 dark:text-red-400" />
