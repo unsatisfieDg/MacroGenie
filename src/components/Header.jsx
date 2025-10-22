@@ -6,64 +6,60 @@ const Header = ({ darkMode, setDarkMode, user, onLogout, userName, greeting, onP
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-5 lg:px-6">
         {/* Single Container Card - extends down to hide content */}
-        <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl pt-4 pb-8 px-4 sm:px-6 border border-gray-100 dark:border-white/5 shadow-lg mb-6">
+        <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl py-3 sm:pt-4 sm:pb-8 px-3 sm:px-6 border border-gray-100 dark:border-white/5 shadow-lg mb-4 sm:mb-6">
           
           {/* MOBILE LAYOUT (< 640px) */}
           <div className="sm:hidden">
-            {/* Top Row: Logo + Title + Dark Mode + Logout */}
-            <div className="flex items-start justify-between gap-3 mb-2">
-              <div className="flex items-start gap-3 min-w-0 flex-1">
-                {/* Logo */}
-                <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2.5 rounded-xl flex-shrink-0">
-                  <Activity className="w-8 h-8 text-white" />
+            {/* Compact Header Layout */}
+            <div className="flex items-center justify-between gap-3">
+              {/* Left: Logo + Title */}
+              <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-2 rounded-xl flex-shrink-0">
+                  <Activity className="w-7 h-7 text-white" />
                 </div>
                 
-                {/* Title + Greeting + Button Stack */}
                 <div className="min-w-0 flex-1">
-                  {/* Title */}
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent leading-tight truncate mb-1">
+                  <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent leading-tight truncate">
                     MacroGenie
                   </h1>
-                  
-                  {/* Greeting */}
-                  <h2 className="text-sm font-bold text-gray-900 dark:text-white truncate mb-2">
+                  <h2 className="text-xs font-semibold text-gray-700 dark:text-gray-300 truncate">
                     {greeting}, {userName || 'there'}!
                   </h2>
-                  
-                  {/* My Stats Button */}
-                  <button
-                    onClick={onProfileClick}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-700 dark:hover:bg-indigo-600 text-white rounded-lg transition-all duration-200 hover-lift text-sm"
-                  >
-                    <User className="w-4 h-4" />
-                    <span>My Stats</span>
-                  </button>
                 </div>
               </div>
               
-              {/* Dark Mode + Logout (top-right) */}
-              <div className="flex items-center gap-2 flex-shrink-0">
-                {/* Dark Mode Toggle */}
+              {/* Right: Action Buttons */}
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {/* My Stats */}
+                <button
+                  onClick={onProfileClick}
+                  className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-all duration-200 flex items-center justify-center"
+                  aria-label="My Stats"
+                >
+                  <User className="w-4.5 h-4.5 text-indigo-600 dark:text-indigo-400" />
+                </button>
+                
+                {/* Dark Mode */}
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 flex items-center justify-center"
                   aria-label="Toggle dark mode"
                 >
                   {darkMode ? (
-                    <Sun className="w-4 h-4 text-yellow-400" />
+                    <Sun className="w-4.5 h-4.5 text-yellow-400" />
                   ) : (
-                    <Moon className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                    <Moon className="w-4.5 h-4.5 text-gray-700 dark:text-gray-300" />
                   )}
                 </button>
                 
-                {/* Logout Button */}
+                {/* Logout */}
                 {user && (
                   <button
                     onClick={onLogout}
                     className="p-2 rounded-lg bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-all duration-200 flex items-center justify-center"
                     aria-label="Logout"
                   >
-                    <LogOut className="w-4 h-4 text-red-600 dark:text-red-400" />
+                    <LogOut className="w-4.5 h-4.5 text-red-600 dark:text-red-400" />
                   </button>
                 )}
               </div>

@@ -272,42 +272,45 @@ const AIAssistant = ({ userData = {}, nutrition = {}, dailyLog = {} }) => {
       </div>
 
       {/* Input Area */}
-      <div className="flex gap-3">
+      <div className="space-y-2 sm:space-y-0 sm:flex sm:gap-3">
+        {/* Mobile: Full width textarea */}
         <div className="flex-1 relative">
           <textarea
             ref={inputRef}
           value={chatInput}
           onChange={(e) => setChatInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about nutrition or meals..."
-            className="w-full p-3 pr-12 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
+            placeholder="Ask me anything..."
+            className="w-full p-3 border-2 border-gray-300 dark:border-white/10 rounded-xl bg-white dark:bg-[#262626] text-sm sm:text-base text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 transition-all duration-300 focus-ring focus:border-green-500 resize-none"
             rows="2"
           />
-          <div className="absolute bottom-2 right-2 text-xs text-gray-400">
+          <div className="hidden sm:block absolute bottom-2 right-2 text-xs text-gray-400">
             Press Enter ↵
           </div>
         </div>
         
+        {/* Mobile: Full width button, Desktop: Auto width */}
         <button
           onClick={sendMessage}
           disabled={!chatInput.trim() || isTyping}
-          className={`px-4 py-3 rounded-xl font-medium text-white transition-all duration-300 focus-ring hover-scale ${
+          className={`w-full sm:w-auto px-4 py-2.5 sm:py-3 rounded-xl font-medium text-white transition-all duration-300 focus-ring hover-scale flex items-center justify-center gap-2 ${
             !chatInput.trim() || isTyping
               ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl'
           }`}
         >
           <Send className="w-5 h-5" />
+          <span className="sm:hidden">Send Message</span>
         </button>
       </div>
       
       {/* Quick Actions */}
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2">
         {['How am I doing?', 'Suggest a meal', 'Give me tips', 'Show my progress', 'Motivate me!'].map((suggestion, idx) => (
           <button
             key={idx}
             onClick={() => setChatInput(suggestion)}
-            className="px-3 py-1.5 text-xs bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-full hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 hover:text-green-700 dark:hover:text-green-400 transition-all duration-300 hover-scale font-medium animate-fade-in-up border border-gray-300 dark:border-white/10"
+            className="px-2.5 sm:px-3 py-1.5 text-xs sm:text-sm bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-300 rounded-full hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-900/30 dark:hover:to-emerald-900/30 hover:text-green-700 dark:hover:text-green-400 transition-all duration-300 hover-scale font-medium animate-fade-in-up border border-gray-300 dark:border-white/10"
             style={{ animationDelay: `${idx * 0.1}s` }}
           >
             {suggestion}
